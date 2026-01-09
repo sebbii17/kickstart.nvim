@@ -3,24 +3,24 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-  'tpope/vim-fugitive',
+  'tpope/vim-fugitive', -- Git commands in nvim
   {
-    'mbbill/undotree',
+    'mbbill/undotree', -- Visualize undo history and more
     config = function()
       vim.keymap.set('n', '<leader><F5>', vim.cmd.UndotreeToggle, { desc = 'Toggle Undotree' })
+      vim.g.undotree_DiffCommand = 'FC'
     end,
   },
   {
-    'stevearc/oil.nvim',
+    'stevearc/oil.nvim', -- A better file explorer
     opts = {},
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- use if prefer nvim-web-devicons
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    lazy = false,
   },
   {
-    'ThePrimeagen/harpoon',
+    'ThePrimeagen/harpoon', -- Quick file navigation
     branch = 'harpoon2',
-    config = function()
-      require('harpoon').setup()
-    end,
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
-  'github/copilot.vim',
+  'github/copilot.vim', -- GitHub Copilot AI code completion
 }
